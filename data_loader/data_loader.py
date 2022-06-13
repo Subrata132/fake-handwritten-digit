@@ -1,5 +1,4 @@
-import os
-import cv2
+import numpy as np
 import pandas as pd
 import torchvision.transforms as transform
 from torch.utils.data import Dataset
@@ -20,7 +19,7 @@ class CustomDataLoader(Dataset):
         return self.image_df.shape[0]
 
     def __getitem__(self, idx):
-        image = self.image_df.iloc[idx].to_numpy().reshape((28, 28))
+        image = self.image_df.iloc[idx].to_numpy().reshape((28, 28)).astype(np.float32)
         if self.image_transformer:
             image = self.image_transformer(image)
         return image
@@ -32,8 +31,8 @@ class LoadData:
         self.batch_size = batch_size
         self.image_transformer = transform.Compose(
             [
-
                 transform.ToTensor(),
+                transform.Lambda(lambda t: (t / 255) * 2 - 1)
             ]
         )
 
