@@ -29,7 +29,6 @@ class Trainer:
         self.fake_label = fake_label
         self.csv_path = csv_path
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        self.print_every = 100
 
     def train(self):
         data_loader = LoadData(csv_path='data/train.csv').load_data()
