@@ -9,7 +9,7 @@ def main():
     parser.add_argument("--gen_lr", default=0.002, type=float)
     parser.add_argument("--dis_lr", default=0.002, type=float)
     parser.add_argument("--real_label", default=0.9, type=float)
-    parser.add_argument("--fake_label", default=0, type=int)
+    parser.add_argument("--fake_label", default=0.0, type=float)
     parser.add_argument("--csv_path", default='data/train.csv', type=str)
     args = parser.parse_args()
     trainer = Trainer(
