@@ -46,7 +46,7 @@ class Trainer:
         all_dis_loss = []
         all_gen_loss = []
         for epoch in range(self.epochs):
-            print(f'Epoch {epoch}')
+            print(f'Epoch {epoch+1}/{self.epochs}')
             fixed_noise = np.random.uniform(-1, 1, size=(16, self.noise_dim)).astype(np.float32)
             fixed_noise = torch.from_numpy(fixed_noise)
             fixed_noise = fixed_noise.to(device=self.device)
