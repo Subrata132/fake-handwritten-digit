@@ -31,7 +31,7 @@ class Trainer:
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
     def train(self):
-        data_loader = LoadData(csv_path='data/train.csv').load_data()
+        data_loader = LoadData(csv_path='data/train.csv', batch_size=self.batch_size).load_data()
         generator_model = Generator(input_size=self.noise_dim).to(device=self.device)
         discriminator_model = Discriminator().to(device=self.device)
         print("Generator parameters: ", sum(p.numel() for p in generator_model.parameters() if p.requires_grad))
